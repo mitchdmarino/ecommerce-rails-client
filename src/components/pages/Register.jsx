@@ -8,6 +8,7 @@ export default function Register({ currentUser, setCurrentUser }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
+    const [username, setUsername] = useState('')
     const [msg, setMsg] = useState('')
 
     const handleSubmit = async e => {
@@ -16,10 +17,11 @@ export default function Register({ currentUser, setCurrentUser }) {
             // post form data to the backend
             const reqBody = {
                 name,
+                username,
                 email, 
                 password
             }
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/register`, reqBody)
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/users`, reqBody)
 
             // save the token in localstorage
             const { token } = response.data
@@ -56,6 +58,15 @@ export default function Register({ currentUser, setCurrentUser }) {
                     value={name}
                     placeholder='example@domain.com'
                     onChange={(e) => setName(e.target.value)}
+                />
+                <label htmlFor='username'>username</label>
+                <input 
+                    type='text'
+                    name='username'
+                    id='username'
+                    value={username}
+                    placeholder='ily'
+                    onChange={(e) => setUsername(e.target.value)}
                 />
                 <label htmlFor='email'>email</label>
                 <input 

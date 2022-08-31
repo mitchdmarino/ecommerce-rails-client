@@ -3,10 +3,10 @@ import axios from 'axios'
 
 export default function Profile({currentUser, handleLogout}) {
     // state for the secret message (aka user privileged data )
-    const [msg, setMsg] = useState('')
+    const [users, setUsers] = useState([])
     // useEffect for getting the user data and checking auth 
     useEffect(() => {
-        const getMessage = async () => {
+        const getUsers = async () => {
             try {
                 // get the token from local storage 
                 const token = localStorage.getItem('jwt')
@@ -17,9 +17,9 @@ export default function Profile({currentUser, handleLogout}) {
                     }
                 }
                 // hit the auth locked endpoint
-                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/users/auth-locked`, options)
+                const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/users`, options)
                 // set the secret user message in state 
-                setMsg(response.data.msg)
+                setUsers(response.data)
     
             } catch (err) {
                 // if the error is 401, the auth failed
@@ -31,8 +31,20 @@ export default function Profile({currentUser, handleLogout}) {
                 }
             }
         }
-        getMessage()
-    })
+        getUsers()
+    }, [])
+    let userList = null
+    if (users.length>0) {
+        userList = users.map((user,i) => {
+            return (
+                <div key={i}>
+                <h1>{user.username}</h1>
+                <p>{user.name}</p>
+                </div>
+                
+            )
+        })
+    }
 
     return (
 
@@ -41,9 +53,10 @@ export default function Profile({currentUser, handleLogout}) {
             
             <p>Email: {currentUser.email}</p>
 
-            <h2>Here is the secret message that is only available to users of User App: </h2>
+            {currentUser.admin? <h1>ADMIN 😼</h1> : <h1>normal 😿</h1>}
 
-            <h3>{msg}</h3>
+            {userList}
+            
         </div>
     )
 }
