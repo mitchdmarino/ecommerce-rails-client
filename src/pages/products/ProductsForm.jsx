@@ -29,6 +29,7 @@ export default function ProductsForm ({initialForm, productId}) {
             try {
                 // hit the auth locked endpoint
                 await axios.post(`${process.env.REACT_APP_SERVER_URL}/products`, form, options)
+                setForm(initialForm)
             } catch (err) {
                 console.warn(err)
             }

@@ -29,11 +29,10 @@ function App() {
     // check to see if token is in storage
     console.log("checking for cart storage");
     const token = localStorage.getItem("jwt");
-    const cartItems = JSON.parse(localStorage.getItem("cart"));
-    console.log(cartItems);
-    if (cartItems) {
-      setCart(cartItems);
-    }
+    // const cartItems = JSON.parse(localStorage.getItem("cart"));
+    // if (cartItems) {
+    //   setCart(cartItems);
+    // }
     if (token) {
       // if so, we will decode it and set the user in app state
       setCurrentUser(jwt_decode(token));
@@ -59,7 +58,20 @@ function App() {
 
   const addToCart = (item) => {
     setCart([...cart, item]);
-    window.localStorage.setItem("cart", JSON.stringify(cart));
+    // window.localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
+  const removeFromCart = (id) => {
+    setCart((current) => {
+      current.filter((item) => {
+        return item.id !== id;
+      });
+    });
+  };
+
+  const emptyCart = () => {
+    setCart([]);
+    // window.localStorage.setItem("cart", "");
   };
 
   return (
@@ -131,7 +143,16 @@ function App() {
             element={<ProductDetails currentUser={currentUser} />}
           />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/cart" element={<Cart items={cart} />} />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                items={cart}
+                removeFromCart={removeFromCart}
+                emptyCart={emptyCart}
+              />
+            }
+          />
         </Routes>
       </main>
     </Router>
