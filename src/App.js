@@ -7,11 +7,12 @@ import {
 import { useState, useEffect } from "react";
 
 import Welcome from "./pages/Welcome";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Products from "./pages/Products";
-import Profile from "./pages/Profile";
-import ProductsForm from "./pages/ProductsForm";
+import Register from "./pages/users/Register";
+import Login from "./pages/users/Login";
+import Products from "./pages/products/Products";
+import Profile from "./pages/users/Profile";
+import ProductsForm from "./pages/products/ProductsForm";
+import ProductDetails from "./pages/products/ProductDetails";
 import Navbar from "./components/Navbar";
 import jwt_decode from "jwt-decode";
 import "./App.css";
@@ -96,7 +97,19 @@ function App() {
             path="/products"
             element={<Products currentUser={currentUser} />}
           />
-          <Route path="/products/new" element={<ProductsForm />} />
+          <Route
+            path="/products/new"
+            element={
+              <ProductsForm
+                initialForm={{ name: "", price: 0, description: "" }}
+                productId={null}
+              />
+            }
+          />
+          <Route
+            path="/products/:id"
+            element={<ProductDetails currentUser={currentUser} />}
+          />
         </Routes>
       </main>
     </Router>
