@@ -24,7 +24,10 @@ export default function Navbar( {currentUser, handleLogout} ) {
         <nav>
             {/* user always sees this section */}
             <Link to='/'>
-                <p>User App</p>
+                <p>Home</p>
+            </Link>
+            <Link to='/products'>
+                <p>Products</p>
             </Link>
             {
                 currentUser ? 

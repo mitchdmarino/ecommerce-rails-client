@@ -15,3 +15,8 @@ code {
 main {
   text-align: center;
 }
+
+.product-edit-link > a {
+  color: white;
+}
+
