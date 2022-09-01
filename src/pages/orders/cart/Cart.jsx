@@ -1,5 +1,29 @@
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
 export default function Cart ({items, removeFromCart, emptyCart}) {
-    
+    const navigate = useNavigate()
+    const submitOrder = () => {
+        const productIDs = []
+        items.forEach(item => {
+            productIDs.push(item.id)
+        })
+        const token = localStorage.getItem('jwt')
+        // make the auth headers 
+        const options = {
+            headers: {
+                'Authorization': token
+            }
+        }
+        axios.post(`${process.env.REACT_APP_SERVER_URL}/orders`, {product_ids: productIDs}, options)
+            .then(response => {
+                console.log(response)
+                navigate("/orders")
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     
     return (
         <div className="cart">
@@ -13,6 +37,7 @@ export default function Cart ({items, removeFromCart, emptyCart}) {
                 )
             }):''}
             <button onClick={emptyCart}>Empty Shopping Cart</button>
+            <button onClick={submitOrder}>Submit Order</button>
         </div>
     )
 }

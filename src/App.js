@@ -2,6 +2,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useNavigate,
   Navigate,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -58,15 +59,19 @@ function App() {
 
   const addToCart = (item) => {
     setCart([...cart, item]);
+    // nav("/products");
+
     // window.localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const removeFromCart = (id) => {
-    setCart((current) => {
-      current.filter((item) => {
+    let currentCart = cart;
+
+    setCart(
+      currentCart.filter((item) => {
         return item.id !== id;
-      });
-    });
+      })
+    );
   };
 
   const emptyCart = () => {

@@ -19,11 +19,13 @@ export default function Product ({product, currentUser, addToCart}) {
    
 
     return (
-        <ProductCard onClick={e => navToDetails(product.id)}>
+        <ProductCard >
+            <div onClick={e => navToDetails(product.id)}>
             <h2>{product.name}</h2>
             <h3>${product.price}</h3>
             <p>{product.description}</p>
-            <div className='product-edit-link'>
+            </div>
+            <div className='product-edit-link'>         
                 {currentUser && currentUser.admin? <Link to={`/products/${product.id}`}>Edit/Delete </Link>: <button onClick={e => addToCart(product)}>Add to Cart</button>}
             </div >
         </ProductCard>
