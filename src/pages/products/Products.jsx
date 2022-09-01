@@ -17,7 +17,7 @@ const Button = styled.p`
 `
 
 
-export default function Products ({currentUser}) {
+export default function Products ({currentUser, addToCart}) {
     const [products, setProducts] = useState([])
     
     useEffect(() => {
@@ -36,7 +36,7 @@ export default function Products ({currentUser}) {
     
     const productList = products.map((product, i) => {
         return (
-            <Product key={i} product={product} currentUser={currentUser}/>
+            <Product key={i} product={product} currentUser={currentUser} addToCart={addToCart}/>
         )
     })
 

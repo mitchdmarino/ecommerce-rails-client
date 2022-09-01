@@ -9,6 +9,9 @@ export default function Navbar( {currentUser, handleLogout} ) {
             </Link>{' | '}
             <Link to='/profile'>
                 Profile
+            </Link>{' | '}
+            <Link to='/orders'>
+                Orders
             </Link>
         </>
     )
@@ -28,6 +31,9 @@ export default function Navbar( {currentUser, handleLogout} ) {
             </Link>
             <Link to='/products'>
                 <p>Products</p>
+            </Link>
+            <Link to='/cart'>
+                <p>Cart</p>
             </Link>
             {
                 currentUser ? 

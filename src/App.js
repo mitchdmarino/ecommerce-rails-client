@@ -13,6 +13,8 @@ import Products from "./pages/products/Products";
 import Profile from "./pages/users/Profile";
 import ProductsForm from "./pages/products/ProductsForm";
 import ProductDetails from "./pages/products/ProductDetails";
+import Orders from "./pages/orders/Orders";
+import Cart from "./pages/orders/cart/Cart";
 import Navbar from "./components/Navbar";
 import jwt_decode from "jwt-decode";
 import "./App.css";
@@ -20,11 +22,18 @@ import "./App.css";
 function App() {
   // the currently logged in user will be stored in state
   const [currentUser, setCurrentUser] = useState(null);
+  const [cart, setCart] = useState([]);
 
-  // useEffect -- if the user navigates away from the page, we will log them back in
+  // useEffect -- if the user navigates away from the page, we will log them back in and look if there are items in cart
   useEffect(() => {
     // check to see if token is in storage
+    console.log("checking for cart storage");
     const token = localStorage.getItem("jwt");
+    const cartItems = JSON.parse(localStorage.getItem("cart"));
+    console.log(cartItems);
+    if (cartItems) {
+      setCart(cartItems);
+    }
     if (token) {
       // if so, we will decode it and set the user in app state
       setCurrentUser(jwt_decode(token));
@@ -34,6 +43,9 @@ function App() {
 
     // if so, we will decode it and set the user in app state
   }, []);
+
+  // store cart items in local storage whenever the cart is updated
+
   // event handler to log the user out when needed
   const handleLogout = () => {
     // check to see if a token exists in local storage
@@ -44,6 +56,12 @@ function App() {
       setCurrentUser(null);
     }
   };
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
   return (
     <Router>
       <header>
@@ -95,7 +113,9 @@ function App() {
           />
           <Route
             path="/products"
-            element={<Products currentUser={currentUser} />}
+            element={
+              <Products currentUser={currentUser} addToCart={addToCart} />
+            }
           />
           <Route
             path="/products/new"
@@ -110,6 +130,8 @@ function App() {
             path="/products/:id"
             element={<ProductDetails currentUser={currentUser} />}
           />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/cart" element={<Cart items={cart} />} />
         </Routes>
       </main>
     </Router>
