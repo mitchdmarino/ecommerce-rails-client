@@ -23,7 +23,7 @@ export default function ProductDetails ({currentUser}) {
         <>
         <h1>{product.name}</h1>
         
-        {currentUser && currentUser.admin? <ProductsForm initialForm={{name: product.name || '', price: product.price || 0, description: product.description || ''}} productId={product.id} />: ''}
+        {currentUser && currentUser.admin? <ProductsForm initialForm={{name: product.name || '', price: product.price || 0, description: product.description || '', image: product.image || ''}} productId={product.id} />: ''}
             
         </>
     )

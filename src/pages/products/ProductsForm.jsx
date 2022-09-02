@@ -74,6 +74,8 @@ export default function ProductsForm ({initialForm, productId}) {
                 <input type="number" name="price" id="price" value={form.price} onChange={e => setForm({...form, price: e.target.value})}/>
                 <label htmlFor="description">description</label>
                 <input type="text" name="description" id="description" value={form.description} onChange={e => setForm({...form, description: e.target.value})}/>
+                <label htmlFor="image">Image Link</label>
+                <input type="text" name="image" id="image" value={form.image} onChange={e => setForm({...form, image: e.target.value})}/>
                 <button type="submit">Submit</button>
             </form>
             {productId? <button onClick={handleDelete}>Delete Product</button>: ''}

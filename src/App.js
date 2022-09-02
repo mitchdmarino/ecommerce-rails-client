@@ -136,7 +136,7 @@ function App() {
             path="/products/new"
             element={
               <ProductsForm
-                initialForm={{ name: "", price: 0, description: "" }}
+                initialForm={{ name: "", price: 0, description: "", image: "" }}
                 productId={null}
               />
             }
