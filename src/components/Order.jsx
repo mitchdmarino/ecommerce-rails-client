@@ -1,5 +1,4 @@
 export default function Order ({item}) {
-    console.log(item)
     const products = item.products.map((product, i) => {
         return (
             <div className="order-products" key={i}>

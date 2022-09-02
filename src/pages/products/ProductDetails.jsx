@@ -11,7 +11,6 @@ export default function ProductDetails ({currentUser}) {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/products/${id}`)
             .then(response => {
-                console.log(response)
                 setProduct(response.data)
             })
             .catch(err => {
@@ -24,7 +23,7 @@ export default function ProductDetails ({currentUser}) {
         <>
         <h1>{product.name}</h1>
         
-        {currentUser && currentUser.admin? <ProductsForm initialForm={{name: product.name, price: product.price, description: product.description}} productId={product.id} />: ''}
+        {currentUser && currentUser.admin? <ProductsForm initialForm={{name: product.name || '', price: product.price || 0, description: product.description || ''}} productId={product.id} />: ''}
             
         </>
     )

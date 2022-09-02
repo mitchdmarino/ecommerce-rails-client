@@ -18,7 +18,6 @@ export default function Login({ currentUser, setCurrentUser }) {
                 password
             }
             const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/auth/login`, reqBody)
-            console.log(response)
             // save the token in localstorage
             const { token } = response.data
             localStorage.setItem('jwt', token)
