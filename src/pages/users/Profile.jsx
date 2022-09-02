@@ -24,11 +24,6 @@ export default function Profile({currentUser, handleLogout}) {
             } catch (err) {
                 // if the error is 401, the auth failed
                 console.warn(err)
-                if(err.response) {
-                    if (err.response.status===401) {
-                        handleLogout()
-                    }
-                }
             }
         }
         getUsers()

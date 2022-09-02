@@ -2,7 +2,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useNavigate,
   Navigate,
 } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -28,7 +27,6 @@ function App() {
   // useEffect -- if the user navigates away from the page, we will log them back in and look if there are items in cart
   useEffect(() => {
     // check to see if token is in storage
-    console.log("checking for cart storage");
     const token = localStorage.getItem("jwt");
     // const cartItems = JSON.parse(localStorage.getItem("cart"));
     // if (cartItems) {

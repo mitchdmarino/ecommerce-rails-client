@@ -5,14 +5,16 @@ import Order from '../../components/Order'
 
 export default function Orders () {
     const [orders, setOrders] = useState([])
-    const token = localStorage.getItem('jwt')
+    
     // make the auth headers 
-    const options = {
-        headers: {
-            'Authorization': token
-        }
-    }
+    
     useEffect(() => {
+        const token = localStorage.getItem('jwt')
+        const options = {
+            headers: {
+                'Authorization': token
+            }
+        }
         axios.get(`${process.env.REACT_APP_SERVER_URL}/orders`, options)
             .then(response => {
                 setOrders(response.data)
