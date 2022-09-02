@@ -3,7 +3,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import Product from '../../components/Product'
+import Product from './components/Product'
 
 const Button = styled.p`
     display: inline-block;

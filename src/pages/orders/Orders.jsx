@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-import Order from '../../components/Order'
+import Order from './components/Order'
 
 export default function Orders () {
     const [orders, setOrders] = useState([])
