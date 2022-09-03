@@ -1,19 +1,12 @@
 import { Link } from 'react-router-dom'
 import { Navbar as Nav, Dropdown, Avatar } from 'flowbite-react'
-import { useEffect, useState } from 'react'
+
 
 
 export default function Navbar( {currentUser, handleLogout} ) {
-    const [dropdown, setDropdown] = useState(false)
 
-    const collapseDropdown = () => {
-        console.log('yo')
-        setDropdown(!dropdown)
-    }
-    
-    useEffect(() => {
-      console.log('we render')  
-    }, [dropdown])
+    const evt = new Event("DOMContentLoaded", { bubbles: true, cancelable: false });
+    document.dispatchEvent(evt);
     
     const loggedIn = (
         <>
@@ -29,7 +22,7 @@ export default function Navbar( {currentUser, handleLogout} ) {
             <Dropdown.Item>
                 <Link to="/" className="block py-2 px-4 text-sm text-black-500 hover:bg-orange-400 " onClick={handleLogout}>Logout</Link>
             </Dropdown.Item>
-            <Dropdown.Item onClick={collapseDropdown}>
+            <Dropdown.Item >
                 <Link to="/profile" className="block py-2 px-4 text-sm text-black-500 hover:bg-orange-400 ">Profile</Link>
             </Dropdown.Item>
             <Dropdown.Item>
