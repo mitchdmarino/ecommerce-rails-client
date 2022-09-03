@@ -15,7 +15,7 @@ import ProductsForm from "./pages/products/ProductsForm";
 import ProductDetails from "./pages/products/ProductDetails";
 import Orders from "./pages/orders/Orders";
 import Cart from "./pages/orders/cart/Cart";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import jwt_decode from "jwt-decode";
 import "./App.css";
 
