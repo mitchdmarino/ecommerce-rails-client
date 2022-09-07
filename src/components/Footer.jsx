@@ -7,7 +7,7 @@ export default function Footer () {
                 <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
                 <Foot.Brand
                     href="#"
-                    src="https://flowbite.com/docs/images/logo.svg"
+                    src="/mugs/download.jpeg"
                     alt="Mughub Logo"
                     name="Mughub"
                 />

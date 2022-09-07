@@ -35,15 +35,17 @@ export default function Products ({currentUser, addToCart}) {
     
     const productList = products.map((product, i) => {
         return (
-            <Product key={i} product={product} currentUser={currentUser} addToCart={addToCart}/>
+                <Product key={i} product={product} currentUser={currentUser} addToCart={addToCart}/>
         )
     })
 
     return (
         <div>
-            <h1>Products</h1>
+            <h1 className='text-5xl p-10 mb-10'>Mug Selection</h1>
             {currentUser && currentUser.admin? <Link to={"/products/new"}><Button>Add Product</Button></Link>: '' }
-            {productList}
+            <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                {productList}
+            </div>
             
         </div>
     )

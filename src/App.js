@@ -159,7 +159,7 @@ function App() {
           />
         </Routes>
       </main>
-      <footer className="bottom-0 absolute w-full">
+      <footer className="mt-[150px]">
         <Footer />
       </footer>
     </Router>
