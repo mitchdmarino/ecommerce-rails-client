@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-import Welcome from "./pages/Welcome";
+import Welcome from "./pages/homepage/Welcome";
 import Register from "./pages/users/Register";
 import Login from "./pages/users/Login";
 import Products from "./pages/products/Products";
@@ -18,6 +18,7 @@ import Cart from "./pages/orders/cart/Cart";
 import Navbar from "./components/navbar/Navbar";
 import jwt_decode from "jwt-decode";
 import "./App.css";
+import Footer from "./components/Footer";
 
 function App() {
   // the currently logged in user will be stored in state
@@ -158,6 +159,9 @@ function App() {
           />
         </Routes>
       </main>
+      <footer className="bottom-0 absolute w-full">
+        <Footer />
+      </footer>
     </Router>
   );
 }
