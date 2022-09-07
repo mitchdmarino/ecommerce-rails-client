@@ -3,7 +3,7 @@ import {Carousel} from 'flowbite-react'
 export default function Featured () {
     return (
         <div>
-            <h2>Holiday Releases</h2>
+            <h2 className='text-xl pb-5'>Halloween Releases</h2>
             <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 w-[500px] mx-auto">
                 <Carousel>
                     <img
