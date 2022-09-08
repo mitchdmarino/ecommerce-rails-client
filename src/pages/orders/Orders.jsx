@@ -32,6 +32,7 @@ export default function Orders () {
 
     return (
         <>
+            <h1 className="text-5xl py-10">All Orders</h1>
             {orderList}
         </>
     )

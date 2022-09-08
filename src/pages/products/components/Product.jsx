@@ -31,7 +31,7 @@ export default function Product ({product, currentUser, addToCart}) {
             </div>
             <div className="bg-blue-100 w-32 px-5 mx-auto rounded-lg hover:bg-blue-200">
                 
-                {currentUser && currentUser.admin? <Link to={`/products/${product.id}`}>Edit/Delete </Link>: <button onClick={e => addToCart(product)}>Add to <i class="icon-shopping-cart"></i></button>}
+                {currentUser && currentUser.admin? <Link to={`/products/${product.id}`}>Edit/Delete </Link>: <button onClick={e => addToCart(product)}>Add to <i className="icon-shopping-cart"></i></button>}
 
             </div>
         </ProductCard>
