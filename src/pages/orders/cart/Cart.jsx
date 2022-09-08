@@ -6,6 +6,7 @@ export default function Cart ({items, removeFromCart, emptyCart, currentUser}) {
     const navigate = useNavigate()
     const submitOrder = () => {
         if (currentUser) {
+            
             const productIDs = []
             items.forEach(item => {
                 productIDs.push(item.id)
@@ -17,6 +18,7 @@ export default function Cart ({items, removeFromCart, emptyCart, currentUser}) {
                     'Authorization': token
                 }
             }
+            console.log('submitting')
             axios.post(`${process.env.REACT_APP_SERVER_URL}/orders`, {product_ids: productIDs}, options)
                 .then(response => {
                     console.log(response)

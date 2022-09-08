@@ -154,6 +154,7 @@ function App() {
                 items={cart}
                 removeFromCart={removeFromCart}
                 emptyCart={emptyCart}
+                currentUser={currentUser}
               />
             }
           />
