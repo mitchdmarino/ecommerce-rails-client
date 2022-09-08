@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import {Button} from 'flowbite-react'
 
 export default function Profile({currentUser, handleLogout}) {
     // state for the secret message (aka user privileged data )
@@ -43,14 +45,18 @@ export default function Profile({currentUser, handleLogout}) {
 
     return (
 
-        <div>
-            <h1>Hello {currentUser.name}</h1>
+        <div className='p-10'>
+            <h1 className='text-left text-4xl '>Welcome {currentUser.name}, see your account details here:</h1>
             
-            <p>Email: {currentUser.email}</p>
+            <p className='text-left py-10 text-2xl'><strong>Name:</strong> {currentUser.name}</p>
+            <p className='text-left py-10 text-2xl'><strong>UserName:</strong> {currentUser.username}</p>
+            <p className='text-left py-10 text-2xl'><strong>Email:</strong> {currentUser.email}</p>
+            <p className='text-left py-10 text-2xl'><strong>Status:</strong> {currentUser.admin?' YOU ARE AN ADMIN 😼': 'Customer'}</p>
+            <Button><Link className="text-xl" to="/orders">{currentUser.admin? 'Update Orders': 'My Orders'}</Link></Button>
 
-            {currentUser.admin? <h1>ADMIN 😼</h1> : <h1>normal 😿</h1>}
+            
 
-            {userList}
+            {/* {userList} */}
             
         </div>
     )
